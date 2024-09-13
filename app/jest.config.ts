@@ -1,15 +1,14 @@
 import nextJest from 'next/jest';
 
 const createJestConfig = nextJest({
-  dir: './', // Diretório da aplicação Next.js
+  dir: './', //base directory, here the 'app' folder lives
 });
 
-// Configurações personalizadas do Jest
 const customJestConfig = {
-  preset: 'ts-jest', // Define o preset para usar ts-jest
-  setupFilesAfterEnv: ['./setupTests.ts'], // Arquivo de configuração pós-inicialização
+  preset: 'ts-jest', 
+  setupFilesAfterEnv: ['./setupTests.ts'], 
   moduleNameMapper: {
-    // Lidando com importações de módulos estáticos (CSS, imagens, etc.)
+    // handling import of static resources (CSS, images, etc.)
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
   },
   testEnvironment: 'jsdom', 
