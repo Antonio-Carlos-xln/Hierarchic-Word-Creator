@@ -1,0 +1,45 @@
+name: Next.js CI
+
+on:
+  workflow_dispatch:
+#  push:
+#    branches:
+#      - main
+#  pull_request:
+#    branches:
+#      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: install dependencies
+        run: npm install
+      
+      - name: compile Typescript
+        run:  npm run compile
+      
+      - name: run the test cases
+        run:  npm test
+           
+      - name: run the linting tool
+        run:  npm run lint
+            
+      - name: build the project  
+        run:  npm run build
+              
+      - name: collect artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: /out/*
+        
