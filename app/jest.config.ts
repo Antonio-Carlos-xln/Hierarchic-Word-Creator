@@ -1,7 +1,7 @@
 import nextJest from 'next/jest';
 
 const createJestConfig = nextJest({
-  dir: './', // Diretório da aplicação Next.js
+  dir: './app', // Diretório da aplicação Next.js
 });
 
 // Configurações personalizadas do Jest
@@ -14,7 +14,7 @@ const customJestConfig = {
   },
   testEnvironment: 'jsdom', 
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  testMatch: ['**/test/?(*.)+(spec|test).ts?(x)']
+  testMatch: ['**/tests/?(*.)+(spec|test).ts?(x)']
 };
 
 export default createJestConfig(customJestConfig);
